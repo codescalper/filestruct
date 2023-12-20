@@ -5,6 +5,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 export default function Component() {
   return (
@@ -15,7 +16,7 @@ export default function Component() {
             <div className="space-y-2">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute w-72 sm:h-44 top-0 sm:top-[1px] scale-150 right-0 sm:right-56 transform-gpu overflow-hidden blur-3xl opacity-50"
+                className="pointer-events-none hidden sm:block absolute w-72 sm:h-44 top-0 sm:top-[1px] scale-150 right-0 sm:right-56 transform-gpu overflow-hidden blur-3xl opacity-50"
               >
                 <div className="relative">
                   <div className="rounded-full sm:h-36 w-full bg-blue-200 dark:bg-purple-800"></div>
@@ -32,7 +33,14 @@ export default function Component() {
                 project in markdown format.
               </p>
             </div>
+
             <div className="w-full max-w-sm space-y-2">
+              <div
+                aria-hidden="true"
+                className="absolute overflow-hidden pointer-events-none top-[50%] left-5 opacity-50 backdrop-blur blur-3xl"
+              >
+                <div className="rounded-full h-20 w-20 sm:h-52 dark:h-44 sm:w-52 dark:bg-sky-500"></div>
+              </div>
               <form className="flex space-x-2">
                 <Input
                   className="max-w-lg flex-1"
@@ -50,35 +58,7 @@ export default function Component() {
           </div>
         </div>
       </section>
-      <footer className="bottom-0 xl:block w-full border-t border-gray-700 border-opacity-50 dark:border-opacity-20 mt-16">
-        <div className="mx-auto sm:max-w-7xl text-center py-5 px-6 sm:px-0">
-          <div className="text-gray-500 dark:text-white/80 text-base sm:text-lg">
-            Built by{" "}
-            <a
-              href="https://twitter.com/mayanks_tw"
-              rel="noopener"
-              target="_blank"
-              className="underline underline-offset-4"
-            >
-              mayank
-            </a>{" "}
-            deployed on{" "}
-            <a
-              href="https://vercel.com"
-              rel="noopener"
-              target="_blank"
-              className="underline underline-offset-4"
-            >
-              vercel
-            </a>
-            <div className="flex  items-center justify-center p-3 xl:p-4  dark:text-gray-500 hover:dark:text-white/80 space-x-2 xl:space-x-4">
-              <FaGithub />
-              <FaTwitter />
-              <FaLinkedin />
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
