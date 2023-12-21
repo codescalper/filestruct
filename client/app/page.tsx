@@ -6,6 +6,7 @@ import { FaTwitter } from "react-icons/fa";
 
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import Form from "@/components/Form";
 
 export default function Component() {
   return (
@@ -41,19 +42,7 @@ export default function Component() {
               >
                 <div className="rounded-full h-20 w-20 sm:h-52 dark:h-44 sm:w-52 dark:bg-sky-500"></div>
               </div>
-              <form className="flex space-x-2">
-                <Input
-                  className="max-w-lg flex-1"
-                  placeholder="https://github.com/codescalper/threadX"
-                  type="email"
-                />
-                <Button
-                  type="submit"
-                  className="bg-cyan-400  hover:bg-cyan-950 hover:text-white"
-                >
-                  Generate ⚡
-                </Button>
-              </form>
+              <Form />
             </div>
           </div>
         </div>
