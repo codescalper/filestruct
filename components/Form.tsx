@@ -101,7 +101,7 @@ const Form = () => {
     <div>
       <form className="flex space-x-2" onSubmit={handleGenerateButtonClick}>
         <Input
-          className="max-w-lg flex-1"
+          className="max-w-xl flex-1"
           placeholder="https://github.com/codescalper/threadX"
           type="url"
           onChange={(e) => setRepourl(e.target.value)}

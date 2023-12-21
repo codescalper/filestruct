@@ -25,9 +25,8 @@ export default function Component() {
                 </div>
               </div>
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Generate{" "}
-                <span className="text-gradient">Project File Tree</span> from
-                GitHub Repository
+                Generate <span className="text-gradient">Ascii File Tree</span>{" "}
+                from GitHub Repository
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl  dark:text-gray-400">
                 Enter a GitHub repository URL and get the file structure of the

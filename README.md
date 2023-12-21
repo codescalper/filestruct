@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+<a href=https://github.com/codescalper/filestruct-rust target="_blank">
+<img src='/placeholder.jpg' width="100%" alt="Banner" />
+</a>
+</p>
 
-## Getting Started
+<p align="center">
+<img src="https://img.shields.io/github/languages/code-size/codescalper/filestruct-rust" alt="GitHub code size in bytes" />
+<img src="https://img.shields.io/github/last-commit/codescalper/filestruct-rust" alt="GitHub last commit" />
+<img src="https://img.shields.io/github/commit-activity/m/codescalper/filestruct-rust" alt="GitHub commit activity month" />
+<img src="https://img.shields.io/github/license/codescalper/filestruct-rust" alt="GitHub license" />
+</p>
 
-First, run the development server:
+## 📌 Overview
+
+filestruct-rust is a project that relies on essential dependencies like react, tailwindcss, axios, and typescript for building file structure visualization in Rust.
+
+## 🔍 Table of Contents
+
+- [📁 Project Structure](#project-structure)
+
+- [📝 Project Summary](#project-summary)
+
+- [💻 Stack](#stack)
+
+- [🚀 Run Locally](#run-locally)
+
+- [🙌 Contributors](#contributors)
+
+## 📁 Project Structure
+
+```bash
+├── .eslintrc.json
+├── .gitignore
+├── README.md
+├── app
+│   ├── favicon.ico
+│   ├── generate
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components.json
+├── components
+│   ├── Footer.tsx
+│   ├── Form.tsx
+│   ├── Header.tsx
+│   ├── ProjectStruct.tsx
+│   ├── theme-provider.tsx
+│   └── ui
+│       ├── button.tsx
+│       ├── input.tsx
+│       ├── toast.tsx
+│       ├── toaster.tsx
+│       └── use-toast.ts
+├── lib
+│   ├── fileTree.ts
+│   └── utils.ts
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── next.svg
+│   └── vercel.svg
+├── state
+│   └── tree-structure.ts
+├── tailwind.config.ts
+├── tsconfig.json
+└── types
+    └── index.ts
+```
+
+## 📝 Project Summary
+
+- [**app**](app): Main application logic and entry point.
+- [**components**](components): Reusable UI components used throughout the application.
+- [**lib**](lib): External libraries or utility functions used in the project.
+- [**public**](public): Static assets accessible to the public.
+- [**state**](state): State management code, such as Redux reducers and actions.
+- [**types**](types): Custom type definitions used in the project.
+- [**app/generate**](app/generate): Code related to generating or scaffolding new files or components.
+- [**components/ui**](components/ui): UI-specific components used in the application.
+- [**app/generate**](app/generate): Code related to generating or scaffolding new files or components.
+- [**app/generate**](app/generate): Code related to generating or scaffolding new files or components.
+
+## 💻 Stack
+
+- [axios](https://axios-http.com/): Promise-based HTTP client for making API requests.
+- [next](https://nextjs.org/): React framework for building server-rendered applications.
+- [react](https://reactjs.org/): JavaScript library for building user interfaces.
+- [react-dom](https://reactjs.org/docs/react-dom.html): Package for rendering React components in the browser.
+- [react-icons](https://react-icons.github.io/react-icons/): Collection of popular icons as React components.
+- [tailwindcss](https://tailwindcss.com/): Utility-first CSS framework for quickly building custom designs.
+- [zustand](https://github.com/pmndrs/zustand): Small and fast state management library for React.
+- [typescript](https://www.typescriptlang.org/): Typed superset of JavaScript that compiles to plain JavaScript.
+
+## 🚀 Run Locally
+
+1.Clone the filestruct-rust repository:
+
+```sh
+git clone https://github.com/codescalper/filestruct-rust
+```
+
+2.Install the dependencies with one of the package managers listed below:
+
+```bash
+npm install
+```
+
+3.Start the development mode:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🙌 Contributors
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<a href="https://github.com/codescalper/filestruct-rust/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=codescalper/filestruct-rust" />
+</a>
