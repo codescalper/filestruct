@@ -13,7 +13,7 @@
 
 ## 📌 Overview
 
-filestruct-rust is a project that relies on essential dependencies like react, tailwindcss, axios, and typescript for building file structure visualization in Rust.
+FileStruct is a project developed using Next.js 13 with Shadcn for UI. It allows users to generate an ASCII file tree by pasting a GitHub repository link. The project is deployed on Vercel, offering a user-friendly interface for visualizing the structure of GitHub repositories.
 
 ## 🔍 Table of Contents
 
