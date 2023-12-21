@@ -4,15 +4,20 @@ import React, { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { generateAsciiTree, TreeNode } from "@/lib/fileTree";
-
+import { useRouter } from "next/navigation";
+import { useTreeStruct } from "@/state/tree-structure";
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
 interface GitHubItem {
   path: string;
   type: string;
 }
 
 const Form = () => {
+  const { toast } = useToast();
   const [repourl, setRepourl] = useState<string>("");
-  const [asciiTree, setAsciiTree] = useState("");
+  const { setTreeStruct, treeStruct } = useTreeStruct();
+
   //   console.log(url);
 
   const generateTree = (repoName: string, items: GitHubItem[]) => {
@@ -47,7 +52,15 @@ const Form = () => {
 
   const extractOwnerAndRepo = (url: string) => {
     const match = url.match(/github.com\/(.+?)\/(.+?)(?:\/|$)/);
-    if (!match) throw new Error("Invalid GitHub repository URL");
+    if (!match) {
+      throw new Error("Invalid GitHub repository URL");
+      toast({
+        variant: "destructive",
+        title: "Invalid GitHub repository URL",
+        description: "There was a problem with your request.",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
+      });
+    }
     return { owner: match[1], repo: match[2] };
   };
   const fetchRepoData = async () => {
@@ -57,20 +70,32 @@ const Form = () => {
       try {
         const response = await axios.get<{ tree: GitHubItem[] }>(url);
         const tree = generateTree(repo, response.data.tree);
-        setAsciiTree(generateAsciiTree(tree));
-        console.log(asciiTree); // log the updated value
+        setTreeStruct(generateAsciiTree(tree));
+        router.push("/generate");
+        console.log(treeStruct);
       } catch (error) {
         console.error("Error fetching repository data:", error);
-        setAsciiTree("Invalid or inaccessible repository URL");
+        toast({
+          variant: "destructive",
+          title: "Invalid or inaccessible repository URL",
+          description: "There was a problem with your request.",
+          action: <ToastAction altText="Try again">Try again</ToastAction>,
+        });
       }
     } else {
-      setAsciiTree("Please enter a valid GitHub repository URL");
+      toast({
+        variant: "destructive",
+        title: "Please enter a valid GitHub repository URL",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
+      });
     }
   };
   const handleGenerateButtonClick = (e: React.FormEvent) => {
-    e.preventDefault(); // prevent the default form submission behavior
+    e.preventDefault();
     fetchRepoData();
   };
+
+  const router = useRouter();
 
   return (
     <div>
