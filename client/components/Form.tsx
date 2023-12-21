@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { generateAsciiTree, TreeNode } from "@/lib/fileTree";
@@ -9,8 +9,10 @@ interface GitHubItem {
   path: string;
   type: string;
 }
+
 const Form = () => {
-  const [url, setUrl] = useState<string>("");
+  const [repourl, setRepourl] = useState<string>("");
+  const [asciiTree, setAsciiTree] = useState("");
   //   console.log(url);
 
   const generateTree = (repoName: string, items: GitHubItem[]) => {
@@ -43,14 +45,41 @@ const Form = () => {
     return treeData;
   };
 
+  const extractOwnerAndRepo = (url: string) => {
+    const match = url.match(/github.com\/(.+?)\/(.+?)(?:\/|$)/);
+    if (!match) throw new Error("Invalid GitHub repository URL");
+    return { owner: match[1], repo: match[2] };
+  };
+  const fetchRepoData = async () => {
+    if (repourl) {
+      const { owner, repo } = extractOwnerAndRepo(repourl);
+      const url = `https://api.github.com/repos/${owner}/${repo}/git/trees/main?recursive=1`;
+      try {
+        const response = await axios.get<{ tree: GitHubItem[] }>(url);
+        const tree = generateTree(repo, response.data.tree);
+        setAsciiTree(generateAsciiTree(tree));
+        console.log(asciiTree); // log the updated value
+      } catch (error) {
+        console.error("Error fetching repository data:", error);
+        setAsciiTree("Invalid or inaccessible repository URL");
+      }
+    } else {
+      setAsciiTree("Please enter a valid GitHub repository URL");
+    }
+  };
+  const handleGenerateButtonClick = (e: React.FormEvent) => {
+    e.preventDefault(); // prevent the default form submission behavior
+    fetchRepoData();
+  };
+
   return (
     <div>
-      <form className="flex space-x-2">
+      <form className="flex space-x-2" onSubmit={handleGenerateButtonClick}>
         <Input
           className="max-w-lg flex-1"
           placeholder="https://github.com/codescalper/threadX"
-          type="email"
-          onChange={(e) => setUrl(e.target.value)}
+          type="url"
+          onChange={(e) => setRepourl(e.target.value)}
         />
         <Button
           type="submit"
