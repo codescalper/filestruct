@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { Button } from "./ui/button";
 import { IoCopyOutline } from "react-icons/io5";
 import { useToast } from "./ui/use-toast";
@@ -40,7 +39,6 @@ const ProjectStruct = () => {
           backgroundColor: "#09090b",
           color: "white",
         }}
-        style={docco}
         wrapLongLines={true}
       >
         {tree}
