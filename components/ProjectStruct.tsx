@@ -12,7 +12,7 @@ const ProjectStruct = () => {
   const { toast } = useToast();
   const tree: string = `${treeStruct}`;
   return (
-    <div className="mt-20 max-w-2xl border shadow-lg shadow-white bg-[#3a] rounded-lg overflow-hidden ">
+    <div className="mt-20 xl:w-1/2 mx-auto relative w-3/4  border shadow-md border-blue-400 shadow-white bg-[#3a] rounded-lg overflow-hidden mb-10">
       <div className="flex justify-between px-4 text-white text-xs items-center bg-gradient-to-b from-black to-cyan-900 ">
         <p className="text-sm"></p>
         <Button

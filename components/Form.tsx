@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useTreeStruct } from "@/state/tree-structure";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
+
 interface GitHubItem {
   path: string;
   type: string;
@@ -15,6 +16,7 @@ interface GitHubItem {
 
 const Form = () => {
   const { toast } = useToast();
+  const [loading, setLoading] = useState<boolean>(false);
   const [repourl, setRepourl] = useState<string>("");
   const { setTreeStruct, treeStruct } = useTreeStruct();
 
@@ -65,6 +67,7 @@ const Form = () => {
   };
   const fetchRepoData = async () => {
     if (repourl) {
+      setLoading(true);
       const { owner, repo } = extractOwnerAndRepo(repourl);
       const url = `https://api.github.com/repos/${owner}/${repo}/git/trees/main?recursive=1`;
       try {
@@ -81,6 +84,8 @@ const Form = () => {
           description: "There was a problem with your request.",
           action: <ToastAction altText="Try again">Try again</ToastAction>,
         });
+      } finally {
+        setLoading(false);
       }
     } else {
       toast({
@@ -108,9 +113,11 @@ const Form = () => {
         />
         <Button
           type="submit"
-          className="bg-cyan-400  hover:bg-cyan-950 hover:text-white"
+          className={`bg-cyan-400 hover:bg-cyan-950 hover:text-white ${
+            loading ? "cursor-not-allowed" : ""
+          }`}
         >
-          Generate ⚡
+          {loading ? "Generating..." : "Generate ⚡"}
         </Button>
       </form>
     </div>
