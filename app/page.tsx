@@ -1,10 +1,3 @@
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-
-import Link from "next/link";
 import Footer from "@/components/Footer";
 import Form from "@/components/Form";
 
@@ -37,10 +30,11 @@ export default function Component() {
             <div className="w-full max-w-sm space-y-2">
               <div
                 aria-hidden="true"
-                className="absolute overflow-hidden pointer-events-none top-[50%] left-5 opacity-50 backdrop-blur blur-3xl"
+                className="absolute overflow-hidden pointer-events-none top-[50%] left-5 opacity-50 backdrop-blur transform-gpu blur-3xl"
               >
-                <div className="rounded-full h-20 w-20 sm:h-52 dark:h-44 sm:w-52 dark:bg-sky-500"></div>
+                <div className="rounded-full md:h-20 md:w-20 xl:h-52 dark:h-44 xl:w-52 dark:bg-sky-500"></div>
               </div>
+
               <Form />
             </div>
           </div>
