@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "filestruct.",
@@ -28,6 +29,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Analytics />
           <Toaster />
         </ThemeProvider>
       </body>
